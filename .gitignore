@@ -42,3 +42,12 @@ models/
 
 # Generated results
 results/
+
+# Cybersecurity datasets
+data/raw/**
+data/processed/**
+data/samples/**
+
+# Keep metadata
+!data/metadata/
+!data/metadata/**
