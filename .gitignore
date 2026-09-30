@@ -1,0 +1,70 @@
+# macOS AppleDouble metadata
+._*
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# macOS / IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Datasets
+data/
+*.csv
+*.parquet
+*.pcap
+*.pcapng
+
+# ML models
+models/
+*.pt
+*.pth
+*.onnx
+*.h5
+*.keras
+*.safetensors
+
+# Generated results
+results/
+
+# Cybersecurity datasets
+data/raw/**
+data/processed/**
+data/samples/**
+
+# Keep metadata
+!data/metadata/
+!data/metadata/**
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS
+.DS_Store
+._*
+
+# Data
+data/processed/
+data/features/
+data/splits/
+
+# Python environments
+backend/.venv/
