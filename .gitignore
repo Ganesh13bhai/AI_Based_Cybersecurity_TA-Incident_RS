@@ -51,3 +51,20 @@ data/samples/**
 # Keep metadata
 !data/metadata/
 !data/metadata/**
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS
+.DS_Store
+._*
+
+# Data
+data/processed/
+data/features/
+data/splits/
+
+# Python environments
+backend/.venv/
