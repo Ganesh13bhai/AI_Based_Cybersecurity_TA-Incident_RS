@@ -2,7 +2,11 @@ from fastapi import FastAPI
 
 from app.api.acquisition import router as acquisition_router
 from app.api.profiler import router as profiler_router
-
+from app.api.evidence import router as evidence_router
+from app.api.investigation import router as investigation_router
+from app.api.threat_intelligence import router as threat_intelligence_router
+from app.api.decision import router as decision_router
+from app.api.reports import router as reports_router
 
 app = FastAPI(
     title="CyberSecAI",
@@ -20,6 +24,19 @@ app.include_router(acquisition_router)
 
 # Dataset profiling
 app.include_router(profiler_router)
+
+# Evidence Store
+app.include_router(evidence_router)
+
+# Investigation Agent
+app.include_router(investigation_router)
+
+# Threat Intelligence Agent
+app.include_router(threat_intelligence_router)
+
+app.include_router(decision_router)
+
+app.include_router(reports_router)
 
 
 # ============================================================

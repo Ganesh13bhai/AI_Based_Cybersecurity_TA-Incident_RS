@@ -1,0 +1,258 @@
+{
+    "PORT_SCAN": {
+        "threat_category": "Network Reconnaissance",
+        "mitre_attack": {
+            "technique_id": "T1046",
+            "technique_name": "Network Service Scanning",
+            "tactic": "Discovery"
+        },
+        "description": "Activity associated with scanning network services or ports to identify accessible services.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Investigate the source host",
+            "Review destination ports contacted",
+            "Check for repeated scanning activity",
+            "Correlate related network events",
+            "Monitor the source for additional reconnaissance behavior"
+        ]
+    },
+
+    "DOS": {
+        "threat_category": "Denial of Service",
+        "mitre_attack": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "tactic": "Impact"
+        },
+        "description": "Activity intended to disrupt availability of network resources or services.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Investigate traffic volume",
+            "Identify the source of abnormal traffic",
+            "Check affected services",
+            "Correlate repeated network events"
+        ]
+    },
+
+    "DDOS": {
+        "threat_category": "Distributed Denial of Service",
+        "mitre_attack": {
+            "technique_id": "T1498",
+            "technique_name": "Network Denial of Service",
+            "tactic": "Impact"
+        },
+        "description": "Distributed traffic intended to disrupt network or service availability.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Identify traffic sources",
+            "Analyze traffic volume",
+            "Identify affected services",
+            "Correlate source addresses and timestamps"
+        ]
+    },
+
+    "BRUTE_FORCE": {
+        "threat_category": "Credential Access",
+        "mitre_attack": {
+            "technique_id": "T1110",
+            "technique_name": "Brute Force",
+            "tactic": "Credential Access"
+        },
+        "description": "Repeated authentication attempts intended to obtain valid credentials.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Identify targeted account or service",
+            "Review authentication failures",
+            "Check source addresses",
+            "Look for successful authentication after repeated failures"
+        ]
+    },
+
+    "WEB_ATTACK": {
+        "threat_category": "Web Application Attack",
+        "mitre_attack": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application",
+            "tactic": "Initial Access"
+        },
+        "description": "Suspicious activity targeting a web application or web-facing service.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Review web server logs",
+            "Identify targeted endpoint",
+            "Inspect request patterns",
+            "Correlate with application errors"
+        ]
+    },
+
+    "BOTNET": {
+        "threat_category": "Command and Control",
+        "mitre_attack": {
+            "technique_id": "T1071",
+            "technique_name": "Application Layer Protocol",
+            "tactic": "Command and Control"
+        },
+        "description": "Network activity potentially associated with compromised systems communicating with external infrastructure.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Investigate source host",
+            "Review outbound connections",
+            "Identify repeated destinations",
+            "Correlate network activity over time"
+        ]
+    },
+
+    "INFILTRATION": {
+        "threat_category": "Network Infiltration",
+        "mitre_attack": {
+            "technique_id": "TA0001",
+            "technique_name": "Initial Access",
+            "tactic": "Initial Access"
+        },
+        "description": "Suspicious network activity associated with unauthorized access or intrusion behavior.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Investigate source and destination hosts",
+            "Review preceding network activity",
+            "Correlate related events",
+            "Inspect affected systems"
+        ]
+    },
+
+    "EXPLOIT": {
+        "threat_category": "Exploitation",
+        "mitre_attack": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application",
+            "tactic": "Initial Access"
+        },
+        "description": "Network activity associated with attempted exploitation of a vulnerable service or application.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Identify targeted service",
+            "Review application and system logs",
+            "Check vulnerability status",
+            "Correlate subsequent activity"
+        ]
+    },
+
+    "FUZZER": {
+        "threat_category": "Fuzzing",
+        "mitre_attack": {
+            "technique_id": "T1190",
+            "technique_name": "Exploit Public-Facing Application",
+            "tactic": "Initial Access"
+        },
+        "description": "Abnormal input patterns potentially associated with testing or exploitation of a service.",
+        "risk_level": "MEDIUM",
+        "recommended_actions": [
+            "Identify targeted service",
+            "Review malformed requests",
+            "Check application errors",
+            "Correlate subsequent events"
+        ]
+    },
+
+    "RECONNAISSANCE": {
+        "threat_category": "Reconnaissance",
+        "mitre_attack": {
+            "technique_id": "T1595",
+            "technique_name": "Active Scanning",
+            "tactic": "Reconnaissance"
+        },
+        "description": "Activity associated with actively collecting information about network systems or services.",
+        "risk_level": "MEDIUM",
+        "recommended_actions": [
+            "Identify scanning source",
+            "Review targeted hosts",
+            "Check scanning frequency",
+            "Correlate related reconnaissance events"
+        ]
+    },
+
+    "BACKDOOR": {
+        "threat_category": "Persistence",
+        "mitre_attack": {
+            "technique_id": "T1505",
+            "technique_name": "Server Software Component",
+            "tactic": "Persistence"
+        },
+        "description": "Suspicious activity potentially associated with maintaining unauthorized access.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Investigate affected host",
+            "Review persistent services",
+            "Inspect authentication activity",
+            "Correlate related events"
+        ]
+    },
+
+    "SHELLCODE": {
+        "threat_category": "Exploitation",
+        "mitre_attack": {
+            "technique_id": "T1055",
+            "technique_name": "Process Injection",
+            "tactic": "Defense Evasion"
+        },
+        "description": "Activity associated with payload execution or exploitation behavior.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Investigate affected host",
+            "Review process activity",
+            "Inspect subsequent network connections",
+            "Correlate with exploitation events"
+        ]
+    },
+
+    "WORM": {
+        "threat_category": "Propagation",
+        "mitre_attack": {
+            "technique_id": "T1210",
+            "technique_name": "Exploitation of Remote Services",
+            "tactic": "Lateral Movement"
+        },
+        "description": "Activity potentially associated with automated propagation between systems.",
+        "risk_level": "HIGH",
+        "recommended_actions": [
+            "Identify affected hosts",
+            "Review lateral network connections",
+            "Check repeated propagation patterns",
+            "Isolate suspicious systems if confirmed"
+        ]
+    },
+
+    "ANALYSIS": {
+        "threat_category": "Analysis Activity",
+        "mitre_attack": {},
+        "description": "Traffic classified into the analysis-related attack category.",
+        "risk_level": "MEDIUM",
+        "recommended_actions": [
+            "Review the original network evidence",
+            "Correlate related events",
+            "Inspect source and destination behavior"
+        ]
+    },
+
+    "OTHER_ATTACK": {
+        "threat_category": "Other Attack",
+        "mitre_attack": {},
+        "description": "Malicious activity that does not fit the currently defined attack families.",
+        "risk_level": "MEDIUM",
+        "recommended_actions": [
+            "Review original evidence",
+            "Correlate related events",
+            "Perform additional investigation"
+        ]
+    },
+
+    "BENIGN": {
+        "threat_category": "Benign",
+        "mitre_attack": {},
+        "description": "Network activity classified as benign by the detection system.",
+        "risk_level": "LOW",
+        "recommended_actions": [
+            "No immediate response required",
+            "Retain evidence for correlation if necessary"
+        ]
+    }
+}
