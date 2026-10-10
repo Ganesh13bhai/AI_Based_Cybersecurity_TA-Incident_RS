@@ -1,3 +1,4 @@
+
 from typing import Any, Dict, List
 
 from evidence.evidence_store import (
@@ -14,7 +15,7 @@ class InvestigateAgent:
 
     def __init__(self):
         self.name = "Investigate Agent"
-        self.version = "v1.1"
+        self.version = "v1.2"
         self.correlation_agent = IncidentCorrelationAgent()
 
     def investigate(self, event_id: str) -> Dict[str, Any]:
@@ -143,24 +144,35 @@ class InvestigateAgent:
             event_id
         )
 
-        correlated_events = correlation_result["related_events"]
+        correlated_events = correlation_result.get(
+            "related_events", []
+        )
 
         # Add correlation explanations to supporting evidence
         for correlated in correlated_events:
+            score = float(
+                correlated.get("correlation_score", 0.0)
+            )
+
+            matching_signals = correlated.get(
+                "matching_signals", []
+            )
+
             evidence_item = (
-                f"Potentially related event {correlated['event_id']}; "
-                f"correlation score: "
-                f"{correlated['correlation_score']:.2f}. "
+                f"Potentially related event "
+                f"{correlated['event_id']}; "
+                f"correlation score: {score:.2f}. "
                 f"Matching signals: "
-                f"{', '.join(correlated['matching_signals'])}."
+                f"{', '.join(matching_signals)}."
             )
 
             if evidence_item not in supporting_evidence:
                 supporting_evidence.append(evidence_item)
 
-        # 7. Save investigation
-        # Only confirmed existing incident membership is stored here.
-        # Cross-incident correlation does not change incident assignments.
+        # 7. Persist investigation and full correlation result.
+        # Correlation is evidence of a possible relationship, not
+        # proof that events belong to the same incident.
+        # No automatic incident merging is performed.
         investigation_id = save_investigation(
             event_id=event_id,
             incident_id=incident_id,
@@ -170,6 +182,7 @@ class InvestigateAgent:
             confidence=confidence,
             supporting_evidence=supporting_evidence,
             related_events=related_events,
+            correlation_result=correlation_result,
         )
 
         # 8. Update event status
@@ -196,12 +209,15 @@ class InvestigateAgent:
             # Rule-based potential relationships
             "correlated_events": correlated_events,
             "correlated_event_count": len(correlated_events),
-            "correlation_method": correlation_result[
+            "correlation_method": correlation_result.get(
                 "correlation_method"
-            ],
-            "correlation_limitations": correlation_result[
-                "limitations"
-            ],
+            ),
+            "correlation_limitations": correlation_result.get(
+                "limitations", []
+            ),
+
+            # Full correlation metadata is persisted in SQLite.
+            "correlation": correlation_result,
 
             "incident_merge_performed": False,
             "status": "INVESTIGATED",
