@@ -7,6 +7,7 @@ from app.api.investigation import router as investigation_router
 from app.api.threat_intelligence import router as threat_intelligence_router
 from app.api.decision import router as decision_router
 from app.api.reports import router as reports_router
+from app.api.risk_analysis import router as risk_analysis_router
 
 app = FastAPI(
     title="CyberSecAI",
@@ -38,7 +39,7 @@ app.include_router(decision_router)
 
 app.include_router(reports_router)
 
-
+app.include_router(risk_analysis_router)
 # ============================================================
 # ROOT ENDPOINT
 # ============================================================
